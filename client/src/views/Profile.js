@@ -124,7 +124,7 @@ export default function Profile() {
                         className="font-normal text-lightBlue-500"
                         onClick={(e) => e.preventDefault()}
                       >
-                        Show more
+                        {/* Show more */}
                       </a>
                     </div>
                   </div>
