@@ -10,25 +10,8 @@ import CardSocialTraffic from "components/Cards/CardSocialTraffic.js";
 export default function Dashboard() {
   return (
     <>
-      {/* <div className="flex flex-wrap">
-        <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
-          <CardLineChart />
-        </div>
-        <div className="w-full xl:w-4/12 px-4">
-          <CardBarChart />
-        </div>
-      </div>
-      <div className="flex flex-wrap mt-4">
-        <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
-          <CardPageVisits />
-        </div>
-        <div className="w-full xl:w-4/12 px-4">
-          <CardSocialTraffic />
-        </div>
-      </div> */}
-
 <section class="p-6 dark:bg-coolGray-800 dark:text-coolGray-50 mt-24 pt-20">
-	<form novalidate="" action="" class="container flex flex-col mx-auto space-y-12 ng-untouched ng-pristine ng-valid">
+	<form novalidate="" action="" class="container flex flex-col mx-auto space-y-12 add-form ng-untouched ng-pristine ng-valid">
 		<fieldset class="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm dark:bg-coolGray-900">
 			<div class="space-y-2 col-span-full lg:col-span-1">
 				<p class="font-medium font-semibold pb-140">Add Item Info</p>
@@ -51,12 +34,12 @@ export default function Dashboard() {
         </div>
 			</div>
 		</fieldset>
+    <input type='submit' value='Add to giftlist' className='btn btn-block'/>
 	</form>
 </section>
 <div class="mt-10">
-<CardBarChart />
+{/* <CardBarChart /> */}
 </div>
-       
     </>
   );
 }
