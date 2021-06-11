@@ -29,8 +29,7 @@ export default function Sidebar() {
             </p>
           </Link>
           {/* User */}
-          <ul>
-          {/* <ul className="md:hidden items-center flex flex-wrap list-none"> */}
+          <ul className="md:hidden items-center flex flex-wrap list-none">
             {/* <li className="inline-block relative">
               <NotificationDropdown />
             </li> */}
@@ -116,7 +115,7 @@ export default function Sidebar() {
                       ? "text-lightBlue-500 hover:text-lightBlue-600"
                       : "text-blueGray-700 hover:text-blueGray-500")
                   }
-                  to="/admin/maps"
+                  to="/Profile"
                 >
                   <i
                     className={
