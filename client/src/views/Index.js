@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Profile from "./Profile";
 
 // components
 
@@ -564,7 +563,6 @@ export default function Landing() {
         </section>
       </main>
       <Footer />
-      <Profile />
     </>
   );
 }
