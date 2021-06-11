@@ -29,10 +29,11 @@ export default function Sidebar() {
             </p>
           </Link>
           {/* User */}
-          <ul className="md:hidden items-center flex flex-wrap list-none">
-            <li className="inline-block relative">
+          <ul>
+          {/* <ul className="md:hidden items-center flex flex-wrap list-none"> */}
+            {/* <li className="inline-block relative">
               <NotificationDropdown />
-            </li>
+            </li> */}
             <li className="inline-block relative">
               <UserDropdown />
             </li>
