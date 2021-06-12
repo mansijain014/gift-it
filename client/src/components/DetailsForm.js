@@ -15,6 +15,9 @@ const DetailsForm = () => {
     profilePic: "",
   });
 
+  const { first_name, last_name, country, city, state, ZIP, bio, profilePic } =
+    formData;
+
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -22,6 +25,17 @@ const DetailsForm = () => {
   const onSave = (e) => {
     e.preventDefault();
     updateProfile(formData, dispatch);
+    setFormData({
+      first_name: "",
+      last_name: "",
+      country: "",
+      city: "",
+      state: "",
+      ZIP: "",
+      bio: "",
+      profilePic: "",
+    });
+    alert("Your Details are saved");
   };
 
   return (
@@ -53,6 +67,7 @@ const DetailsForm = () => {
                         id="first_name"
                         autoComplete="given-name"
                         onChange={onChange}
+                        value={first_name}
                         className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                       />
                     </div>
@@ -68,8 +83,9 @@ const DetailsForm = () => {
                         type="text"
                         name="last_name"
                         id="last_name"
-                        autoComplete="family-name"
+                        autoComplete="last-name"
                         onChange={onChange}
+                        value={last_name}
                         className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                       />
                     </div>
@@ -86,6 +102,7 @@ const DetailsForm = () => {
                         name="country"
                         autoComplete="country"
                         onChange={onChange}
+                        value={country}
                         className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       >
                         <option value="Afganistan">Afghanistan</option>
@@ -403,6 +420,7 @@ const DetailsForm = () => {
                         name="city"
                         id="city"
                         onChange={onChange}
+                        value={city}
                         className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                       />
                     </div>
@@ -418,6 +436,7 @@ const DetailsForm = () => {
                         type="text"
                         name="state"
                         id="state"
+                        value={state}
                         onChange={onChange}
                         className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                       />
@@ -435,6 +454,7 @@ const DetailsForm = () => {
                         name="ZIP"
                         id="postal_code"
                         onChange={onChange}
+                        value={ZIP}
                         autoComplete="postal-code"
                         className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                       />
@@ -452,10 +472,10 @@ const DetailsForm = () => {
                           id="bio"
                           name="bio"
                           rows={3}
+                          value={bio}
                           onChange={onChange}
                           className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
                           placeholder=""
-                          defaultValue={""}
                         />
                       </div>
                     </div>
@@ -469,6 +489,7 @@ const DetailsForm = () => {
                       <input
                         type="text"
                         name="profilePic"
+                        value={profilePic}
                         onChange={onChange}
                         autoComplete="profilePic"
                         className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"

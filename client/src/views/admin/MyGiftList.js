@@ -14,6 +14,8 @@ function MyGiftList() {
     imageURL: "",
   });
 
+  const { itemName, description, imageURL } = formData;
+
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -22,6 +24,11 @@ function MyGiftList() {
     e.preventDefault();
     saveItemInDB(formData, userDetails.uid);
     alert("Your Items have been saved");
+    setFormData({
+      itemName: "",
+      description: "",
+      imageURL: "",
+    });
   };
 
   return (
@@ -53,6 +60,7 @@ function MyGiftList() {
                           className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
                           placeholder="Name"
                           onChange={onChange}
+                          value={itemName}
                         />
                       </div>
                     </div>
@@ -72,7 +80,7 @@ function MyGiftList() {
                         rows={3}
                         className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
                         placeholder="Describe your gift item"
-                        defaultValue={""}
+                        value={description}
                         onChange={onChange}
                       />
                     </div>
@@ -92,6 +100,7 @@ function MyGiftList() {
                         className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
                         placeholder="Image URL"
                         onChange={onChange}
+                        value={imageURL}
                       />
                     </div>
                   </div>

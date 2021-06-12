@@ -17,7 +17,7 @@ export default function Login() {
   const { email, password } = formData;
 
   if (isLoggedIn) {
-    return <Redirect to="/admin/dashboard" />;
+    return <Redirect to="/admin/mygiftlist" />;
   }
 
   const onChange = (e) => {

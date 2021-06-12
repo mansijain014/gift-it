@@ -32,6 +32,7 @@ export default function Admin() {
             <Route path="/admin/exchange" exact component={Exchange} />
             <Route path="/admin/donate" exact component={Donate} />
             <Route path="/admin/shop" exact component={Shop} />
+            <Route path="/admin/edit" exact component={DetailsForm} />
             <Redirect from="/admin" to="/admin/mygiftlist" />
           </Switch>
           <FooterAdmin />
