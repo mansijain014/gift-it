@@ -11,10 +11,11 @@ import DetailsForm from "../components/DetailsForm";
 
 // views
 
-import Dashboard from "../views/admin/Dashboard.js";
-import Maps from "views/admin/Maps.js";
-import Settings from "../views/admin/Settings.js";
-import Tables from "views/admin/Tables.js";
+import MyGiftList from "../views/admin/MyGiftList.js";
+import Profile from "views/admin/Profile.js";
+import Exchange from "../views/admin/Exchange.js";
+import Donate from "../views/admin/Donate.js";
+import Shop from "../views/admin/Shop";
 
 export default function Admin() {
   return (
@@ -26,12 +27,12 @@ export default function Admin() {
         <HeaderStats />
         <div className="px-4 md:px-10 mx-auto w-full -m-24">
           <Switch>
-            <Route path="/admin/dashboard" exact component={Dashboard} />
-            <Route path="/admin/maps" exact component={Maps} />
-            <Route path="/admin/settings" exact component={Settings} />
-            <Route path="/admin/tables" exact component={Tables} />
-            <Route path="/admin/edit" exact component={DetailsForm} />
-            <Redirect from="/admin" to="/admin/dashboard" />
+            <Route path="/admin/mygiftlist" exact component={MyGiftList} />
+            <Route path="/admin/profile" exact component={Profile} />
+            <Route path="/admin/exchange" exact component={Exchange} />
+            <Route path="/admin/donate" exact component={Donate} />
+            <Route path="/admin/shop" exact component={Shop} />
+            <Redirect from="/admin" to="/admin/mygiftlist" />
           </Switch>
           <FooterAdmin />
         </div>

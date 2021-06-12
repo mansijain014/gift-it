@@ -24,6 +24,7 @@ import Profile from "./views/Profile";
 import Index from "./views/Index.js";
 
 import PrivateRoute from "routing/privateRoutes";
+import DetailsForm from "components/DetailsForm";
 
 
 const App = () => {
@@ -37,6 +38,7 @@ const App = () => {
           {/* add routes without layouts */}
           {/* <Route path="/landing" exact component={Landing} /> */}
           <PrivateRoute path="/profile" exact component={Profile} />
+          <Route path="/detailsform" component={DetailsForm} />
           <Route path="/" exact component={Index} />
           {/* add redirect for first page */}
           <Redirect from="*" to="/" />

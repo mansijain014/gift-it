@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 // import Navbar from "components/Navbars/AuthNavbar.js";
 
-function Dashboard() {
+function MyGiftList() {
   const [formData, setFormData] = useState({
     name: "",
     description: "",
@@ -129,4 +129,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default MyGiftList;

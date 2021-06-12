@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { userSignOut } from "../../firebaseActions";
 
-import NotificationDropdown from "components/Dropdowns/NotificationDropdown.js";
+// import NotificationDropdown from "components/Dropdowns/NotificationDropdown.js";
 import UserDropdown from "components/Dropdowns/UserDropdown.js";
 
 export default function Sidebar() {
@@ -93,16 +93,16 @@ export default function Sidebar() {
                 <Link
                   className={
                     "text-xs uppercase py-3 font-bold block " +
-                    (window.location.href.indexOf("/admin/dashboard") !== -1
+                    (window.location.href.indexOf("/admin/mygiftlist") !== -1
                       ? "text-lightBlue-500 hover:text-lightBlue-600"
                       : "text-blueGray-700 hover:text-blueGray-500")
                   }
-                  to="/admin/dashboard"
+                  to="/admin/mygiftlist"
                 >
                   <i
                     className={
                       "fas fa-clipboard-list mr-2 text-sm " +
-                      (window.location.href.indexOf("/admin/dashboard") !== -1
+                      (window.location.href.indexOf("/admin/mygiftlist") !== -1
                         ? "opacity-75"
                         : "text-blueGray-300")
                     }
@@ -114,16 +114,16 @@ export default function Sidebar() {
                 <Link
                   className={
                     "text-xs uppercase py-3 font-bold block " +
-                    (window.location.href.indexOf("/admin/settings") !== -1
+                    (window.location.href.indexOf("/admin/profile") !== -1
                       ? "text-lightBlue-500 hover:text-lightBlue-600"
                       : "text-blueGray-700 hover:text-blueGray-500")
                   }
-                  to="/admin/settings"
+                  to="/admin/profile"
                 >
                   <i
                     className={
                       "fas fa-user mr-2 text-sm " +
-                      (window.location.href.indexOf("/admin/settings") !== -1
+                      (window.location.href.indexOf("/admin/profile") !== -1
                         ? "opacity-75"
                         : "text-blueGray-300")
                     }
@@ -135,16 +135,16 @@ export default function Sidebar() {
                 <Link
                   className={
                     "text-xs uppercase py-3 font-bold block " +
-                    (window.location.href.indexOf("/admin/maps") !== -1
+                    (window.location.href.indexOf("/admin/exchange") !== -1
                       ? "text-lightBlue-500 hover:text-lightBlue-600"
                       : "text-blueGray-700 hover:text-blueGray-500")
                   }
-                  to="/admin/maps"
+                  to="/admin/exchange"
                 >
                   <i
                     className={
                       "fas fa-exchange-alt mr-2 text-sm " +
-                      (window.location.href.indexOf("/admin/maps") !== -1
+                      (window.location.href.indexOf("/admin/exchange") !== -1
                         ? "opacity-75"
                         : "text-blueGray-300")
                     }
@@ -157,16 +157,16 @@ export default function Sidebar() {
                 <Link
                   className={
                     "text-xs uppercase py-3 font-bold block " +
-                    (window.location.href.indexOf("/admin/tables") !== -1
+                    (window.location.href.indexOf("/admin/donate") !== -1
                       ? "text-lightBlue-500 hover:text-lightBlue-600"
                       : "text-blueGray-700 hover:text-blueGray-500")
                   }
-                  to="/admin/tables"
+                  to="/admin/donate"
                 >
                   <i
                     className={
                       "fas fa-people-carry mr-2 text-sm " +
-                      (window.location.href.indexOf("/admin/tables") !== -1
+                      (window.location.href.indexOf("/admin/donate") !== -1
                         ? "opacity-75"
                         : "text-blueGray-300")
                     }
@@ -179,21 +179,21 @@ export default function Sidebar() {
                 <Link
                   className={
                     "text-xs uppercase py-3 font-bold block " +
-                    (window.location.href.indexOf("/admin/store") !== -1
+                    (window.location.href.indexOf("/admin/shop") !== -1
                       ? "text-lightBlue-500 hover:text-lightBlue-600"
                       : "text-blueGray-700 hover:text-blueGray-500")
                   }
-                  to="/admin/store"
+                  to="/admin/shop"
                 >
                   <i
                     className={
                       "fas fa-shopping-cart mr-2 text-sm " +
-                      (window.location.href.indexOf("/admin/store") !== -1
+                      (window.location.href.indexOf("/admin/shop") !== -1
                         ? "opacity-75"
                         : "text-blueGray-300")
                     }
                   ></i>{" "}
-                  Store
+                  Shop
                 </Link>
               </li>
 
