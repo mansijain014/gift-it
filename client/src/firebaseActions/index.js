@@ -30,7 +30,7 @@ export const userSignIn = async (data, dispatch) => {
   });
 };
 
-export const userSignout = async (dispatch) => {
+export const userSignOut = async (dispatch) => {
   await firebaseAuth.signOut().then(() => {
     dispatch(signOut(false));
   });

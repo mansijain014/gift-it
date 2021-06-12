@@ -1,11 +1,14 @@
 /*eslint-disable*/
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { userSignOut } from "../../firebaseActions";
 
 import NotificationDropdown from "components/Dropdowns/NotificationDropdown.js";
 import UserDropdown from "components/Dropdowns/UserDropdown.js";
 
 export default function Sidebar() {
+  const dispatch = useDispatch();
   const [collapseShow, setCollapseShow] = React.useState("hidden");
   return (
     <>
@@ -25,7 +28,7 @@ export default function Sidebar() {
             to="/"
           >
             <p>
-            <i class="fas fa-gift"></i> Gift It
+              <i class="fas fa-gift"></i> Gift It
             </p>
           </Link>
           {/* User */}
@@ -195,19 +198,19 @@ export default function Sidebar() {
               </li>
 
               <li className="items-center">
-                <Link
+                <div
                   className={
-                    "text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500" 
+                    "text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500 cursor-pointer"
                   }
-                  to="/"
+                  onClick={() => userSignOut(dispatch)}
                 >
                   <i
                     className={
-                      "fas fa-sign-out-alt mr-2 text-sm opacity-75 text-blueGray-300" 
+                      "fas fa-sign-out-alt mr-2 text-sm opacity-75 text-blueGray-300"
                     }
                   ></i>{" "}
                   Logout
-                </Link>
+                </div>
               </li>
             </ul>
           </div>

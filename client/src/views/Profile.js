@@ -71,13 +71,14 @@ export default function Profile() {
                           Dashboard
                         </button>
                       </Link>
-                      <button
-                        className="bg-lightBlue-500 active:bg-lightBlue-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
-                        type="button"
-                        onClick={() => userSignout(dispatch)}
-                      >
-                        <i class="fas fa-user-edit"></i> Edit Profile
-                      </button>
+                      <Link to="/admin/edit">
+                        <button
+                          className="bg-lightBlue-500 active:bg-lightBlue-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
+                          type="button"
+                        >
+                          <i class="fas fa-user-edit"></i> Edit Profile
+                        </button>
+                      </Link>
                     </div>
                   </div>
                   <div className="w-full lg:w-4/12 px-4 lg:order-1">
