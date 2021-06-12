@@ -4,13 +4,13 @@ import React from "react";
 import Navbar from "components/Navbars/AuthNavbar.js";
 import Footer from "components/Footers/Footer.js";
 
-import CardSettings from "components/Cards/CardSettings.js";
-import CardProfile from "components/Cards/CardProfile.js";
+// import CardSettings from "components/Cards/CardSettings.js";
+// import CardProfile from "components/Cards/CardProfile.js";
 
 export default function Settings() {
   return (
     <>
-      <Navbar transparent />
+      {/* <Navbar transparent /> */}
       <main className="profile-page">
         <section className="relative block h-500-px">
           <div
@@ -71,28 +71,12 @@ export default function Settings() {
                   </div>
                   <div className="w-full lg:w-4/12 px-4 lg:order-1">
                     <div className="flex justify-center py-4 lg:pt-4 pt-8">
-                      <div className="mr-4 p-3 text-center">
-                        <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                          22
-                        </span>
-                        <span className="text-sm text-blueGray-400">
-                          Friends
-                        </span>
-                      </div>
-                      <div className="mr-4 p-3 text-center">
-                        <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                          10
-                        </span>
-                        <span className="text-sm text-blueGray-400">
-                          Photos
-                        </span>
-                      </div>
                       <div className="lg:mr-4 p-3 text-center">
                         <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                          89
+                          Credit Points
                         </span>
                         <span className="text-sm text-blueGray-400">
-                          Comments
+                          500
                         </span>
                       </div>
                     </div>
