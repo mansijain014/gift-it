@@ -25,7 +25,7 @@ export default function Admin() {
         <AdminNavbar />
         {/* Header */}
         <HeaderStats />
-        <div className="px-4 md:px-10 mx-auto w-full -m-24">
+        <div className="px-4 md:px-10 mx-auto w-full">
           <Switch>
             <Route path="/admin/mygiftlist" exact component={MyGiftList} />
             <Route path="/admin/profile" exact component={Profile} />
