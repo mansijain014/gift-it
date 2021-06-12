@@ -11,7 +11,7 @@ export default function Tables() {
 <div>
         <div className="md:grid md:grid-cols-3 md:gap-6 mt-24 pt-20">
           <div className="md:col-span-1">
-              <h3 className="text-lg font-medium font-semibold leading-6 text-gray-900">Add item for donation</h3>
+              <h3 className="text-lg font-medium font-semibold leading-6 text-gray-900"><i class="fas fa-people-carry"></i> Add item for donation</h3>
           </div>
           <div className="mt-5 md:mt-0 md:col-span-2">
             <form action="#" method="POST">
@@ -137,7 +137,7 @@ export default function Tables() {
                         name="address"
                         rows={3}
                         className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
-                        placeholder="plot, street name, city"
+                        placeholder="Plot, street name, city"
                         defaultValue={''}
                       />
                     </div>

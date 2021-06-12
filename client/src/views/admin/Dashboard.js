@@ -9,7 +9,7 @@ function Dashboard() {
       <div>
         <div className="md:grid md:grid-cols-3 md:gap-6 mt-24 pt-20">
           <div className="md:col-span-1">
-              <h3 className="text-lg font-medium font-semibold leading-6 text-gray-900">Add Item Info</h3>
+              <h3 className="text-lg font-medium font-semibold leading-6 text-gray-900"><i class="fas fa-clipboard-list"></i> Add Item Info</h3>
           </div>
           <div className="mt-5 md:mt-0 md:col-span-2">
             <form action="#" method="POST">
