@@ -7,14 +7,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   const state = useSelector((state) => state);
   const { isLoggedIn } = state;
 
-  return (
-    <Route
-      {...rest}
-      render={(props) =>
-        isLoggedIn ? <Component {...props} /> : <Redirect to="/login" />
-      }
-    />
-  );
+  return <>{isLoggedIn ? <Component /> : <Redirect to="/auth/login" />}</>;
 };
 
 PrivateRoute.propTypes = {

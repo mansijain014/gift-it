@@ -25,3 +25,35 @@ export const userSignIn = async (data, dispatch) => {
       .then((doc) => dispatch(signIn(doc.data())));
   });
 };
+
+export function fetchDetails(callback) {
+  return checkUserAuthState((authData) => {
+    if (authData === null) {
+      callback.call(null, { isLoggedIn: false });
+    } else {
+      callback.call(null, {
+        ...authData,
+        isLoggedIn: true,
+      });
+    }
+  });
+}
+
+export function checkUserAuthState(callback) {
+  return firebaseAuth.onAuthStateChanged((user) => {
+    if (user) {
+      callback.call(null, getAuthData(user));
+    } else {
+      callback.call(null, null);
+    }
+  });
+}
+
+export function getAuthData(user) {
+  const userProfile = Object.assign({}, user.providerData[0]);
+
+  // Update uid inside providerData to user's uid
+  userProfile.uid = user.uid;
+
+  return userProfile;
+}
