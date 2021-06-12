@@ -1,18 +1,29 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { useState } from "react";
+import { saveItemInDB } from "../../firebaseActions";
 // import Navbar from "components/Navbars/AuthNavbar.js";
 
 function MyGiftList() {
-  const [formData, setFormData] = useState({
-    name: "",
-    description: "",
-    password: "",
-  });
+  const state = useSelector((state) => state);
+  const { userDetails } = state;
 
+  const [formData, setFormData] = useState({
+    itemName: "",
+    description: "",
+    imageURL: "",
+  });
 
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  const saveItem = (e) => {
+    e.preventDefault();
+    saveItemInDB(formData, userDetails.uid);
+    alert("Your Items have been saved");
+  };
+
   return (
     <>
       <div>
@@ -41,6 +52,7 @@ function MyGiftList() {
                           id="itemName"
                           className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
                           placeholder="Name"
+                          onChange={onChange}
                         />
                       </div>
                     </div>
@@ -61,11 +73,29 @@ function MyGiftList() {
                         className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
                         placeholder="Describe your gift item"
                         defaultValue={""}
+                        onChange={onChange}
                       />
                     </div>
                   </div>
-
-                  <div>
+                  <div className="col-span-3 sm:col-span-2">
+                    <label
+                      htmlFor="imageURL"
+                      className="block text-sm font-medium font-semibold text-gray-700"
+                    >
+                      URL of the Image to Upload
+                    </label>
+                    <div className="mt-1 flex rounded-md shadow-sm">
+                      <input
+                        type="text"
+                        name="imageURL"
+                        id="imageURL"
+                        className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
+                        placeholder="Image URL"
+                        onChange={onChange}
+                      />
+                    </div>
+                  </div>
+                  {/* <div>
                     <label className="block text-sm font-medium font-semibold text-gray-700">
                       Add item image
                     </label>
@@ -110,12 +140,13 @@ function MyGiftList() {
                         </p>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
                 <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
                   <button
                     type="submit"
                     className="btn btn-block inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    onClick={(e) => saveItem(e)}
                   >
                     Add to giftlist
                   </button>

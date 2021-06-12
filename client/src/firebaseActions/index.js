@@ -1,3 +1,4 @@
+import firebase from "firebase";
 import { firebaseAuth, db } from "../firebase";
 import { signIn, signOut, signUp } from "../redux/actions";
 
@@ -90,4 +91,12 @@ export const updateProfile = async (data, dispatch) => {
       profilePic,
     })
     .then(() => dispatch(signUp({ ...currentDetails, data })));
+};
+
+export const saveItemInDB = (data, uid) => {
+  db.collection("users")
+    .doc(uid)
+    .update({
+      items: firebase.firestore.FieldValue.arrayUnion(data),
+    });
 };
