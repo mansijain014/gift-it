@@ -8,15 +8,6 @@ import React from "react";
 export default function Tables() {
   return (
     <>
-      {/* <div className="flex flex-wrap mt-4">
-        <div className="w-full mb-12 px-4">
-          <FormTransaction />
-        </div>
-        <div className="w-full mb-12 px-4">
-          <CardTable />
-        </div>
-      </div> */}
-
 <div>
         <div className="md:grid md:grid-cols-3 md:gap-6 mt-24 pt-20">
           <div className="md:col-span-1">
@@ -52,7 +43,7 @@ export default function Tables() {
                           name="contactNo"
                           id="contactNo"
                           className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
-                          placeholder="ContactNo"
+                          placeholder="000-000-0000"
                         />
                       </div>
                     </div>
@@ -70,18 +61,40 @@ export default function Tables() {
                         />
                       </div>
                     </div>
+
                     <div className="col-span-3 sm:col-span-2">
-                      <label htmlFor="name" className="block text-sm font-medium font-semibold text-gray-700">
-                        Item
-                      </label>
-                      <div className="mt-1 flex rounded-md shadow-sm">
-                        <input
-                          type="checkbox"
-                          name="name"
-                          id="name"
-                          className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
-                          placeholder="Name"
-                        />
+                      <div>
+                        <label htmlFor="category" className="block text-sm font-medium font-semibold text-gray-700">Select a category</label>
+                      </div>
+                      <div>
+                        <input type="checkbox" value="Clothes" />
+                        <label className="text-sm font-medium font-semibold text-gray-700 pl-4">
+                          <span>Clothes</span>
+                        </label>
+                      </div>
+                      <div>
+                        <input type="checkbox" value="Toys" />
+                        <label className="text-sm font-medium font-semibold text-gray-700 pl-4">
+                          <span>Toys</span>
+                        </label>
+                      </div>
+                      <div>
+                        <input type="checkbox" value="Furniture" />
+                        <label className="text-sm font-medium font-semibold text-gray-700 pl-4">
+                          <span>Furniture</span>
+                        </label>
+                      </div>
+                      <div>
+                        <input type="checkbox" value="Gadgets" />
+                        <label className="text-sm font-medium font-semibold text-gray-700 pl-4">
+                          <span>Gadgets</span>
+                        </label>
+                      </div>
+                      <div>
+                        <input type="checkbox" value="Others" />
+                        <label className="text-sm font-medium font-semibold text-gray-700 pl-4"> 
+                          <span>Others</span>
+                        </label>
                       </div>
                     </div>
                     <div className="col-span-3 sm:col-span-2">
