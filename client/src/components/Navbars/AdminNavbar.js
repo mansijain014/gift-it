@@ -1,6 +1,6 @@
 import React from "react";
 
-import UserDropdown from "components/Dropdowns/UserDropdown.js";
+import UserDropdown from "../../components/Dropdowns/UserDropdown.js";
 // import Profile from "components/views/auth/Profile.js";
 
 export default function Navbar() {
@@ -12,8 +12,7 @@ export default function Navbar() {
           {/* Brand */}
           <a
             className="text-black text-sm uppercase hidden lg:inline-block font-semibold"
-            href=""
-            onClick={(e) => e.preventDefault()}
+            href="/"
           >
             Gift It
           </a>
