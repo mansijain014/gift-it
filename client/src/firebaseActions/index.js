@@ -1,5 +1,5 @@
 import { firebaseAuth, db } from "../firebase";
-import { signIn, signUp } from "../redux/actions";
+import { signIn, signOut, signUp } from "../redux/actions";
 
 export const userSignUp = async (data, dispatch) => {
   const { email, password, name } = data;
@@ -27,6 +27,12 @@ export const userSignIn = async (data, dispatch) => {
       .doc(res.user.uid)
       .get()
       .then((doc) => dispatch(signIn(doc.data())));
+  });
+};
+
+export const userSignout = async (dispatch) => {
+  await firebaseAuth.signOut().then(() => {
+    dispatch(signOut(false));
   });
 };
 
