@@ -13,6 +13,10 @@ export const userSignUp = async (data, dispatch) => {
     })
     .catch((err) => err.message);
 
+  await firebaseAuth.currentUser.updateProfile({
+    displayName: name,
+  });
+
   return error;
 };
 
@@ -31,10 +35,15 @@ export function fetchDetails(callback) {
     if (authData === null) {
       callback.call(null, { isLoggedIn: false });
     } else {
-      callback.call(null, {
-        ...authData,
-        isLoggedIn: true,
-      });
+      db.collection("users")
+        .doc(authData.uid)
+        .get()
+        .then((doc) => {
+          callback.call(null, {
+            ...authData,
+            isLoggedIn: true,
+          });
+        });
     }
   });
 }
