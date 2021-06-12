@@ -1,6 +1,7 @@
 import React from "react";
 import {useState} from 'react'
 // import Navbar from "components/Navbars/AuthNavbar.js";
+import Store from "./Store";
 
 function Dashboard() {
 
@@ -95,6 +96,7 @@ function Dashboard() {
           </div>
         </div>
       </div>
+      <Store />
     </>
   );
 }
