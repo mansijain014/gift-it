@@ -29,7 +29,7 @@ const Register = () => {
   };
 
   if (isLoggedIn) {
-    <Redirect to="/admin/edit" />;
+    return <Redirect to="/admin/edit" />;
   }
   if (errorMsg) {
     alert(errorMsg);
