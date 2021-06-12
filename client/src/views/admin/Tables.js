@@ -20,7 +20,7 @@ export default function Tables() {
 <div>
         <div className="md:grid md:grid-cols-3 md:gap-6 mt-24 pt-20">
           <div className="md:col-span-1">
-              <h3 className="text-lg font-medium font-semibold leading-6 text-gray-900">Add Item Info</h3>
+              <h3 className="text-lg font-medium font-semibold leading-6 text-gray-900">Add item for donation</h3>
           </div>
           <div className="mt-5 md:mt-0 md:col-span-2">
             <form action="#" method="POST">
@@ -28,21 +28,77 @@ export default function Tables() {
                 <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
                   <div className="grid grid-cols-3 gap-6">
                     <div className="col-span-3 sm:col-span-2">
-                      <label htmlFor="itemName" className="block text-sm font-medium font-semibold text-gray-700">
-                        Item Name
+                      <label htmlFor="name" className="block text-sm font-medium font-semibold text-gray-700">
+                        Name
                       </label>
                       <div className="mt-1 flex rounded-md shadow-sm">
                         <input
                           type="text"
-                          name="itemName"
-                          id="itemName"
+                          name="name"
+                          id="name"
                           className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
                           placeholder="Name"
                         />
                       </div>
                     </div>
                   </div>
-
+                  <div className="col-span-3 sm:col-span-2">
+                      <label htmlFor="contactNo" className="block text-sm font-medium font-semibold text-gray-700">
+                        Contact No
+                      </label>
+                      <div className="mt-1 flex rounded-md shadow-sm">
+                        <input
+                          type="text"
+                          name="contactNo"
+                          id="contactNo"
+                          className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
+                          placeholder="ContactNo"
+                        />
+                      </div>
+                    </div>
+                    <div className="col-span-3 sm:col-span-2">
+                      <label htmlFor="email" className="block text-sm font-medium font-semibold text-gray-700">
+                        Email
+                      </label>
+                      <div className="mt-1 flex rounded-md shadow-sm">
+                        <input
+                          type="text"
+                          name="email"
+                          id="email"
+                          className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
+                          placeholder="abc@example.com"
+                        />
+                      </div>
+                    </div>
+                    <div className="col-span-3 sm:col-span-2">
+                      <label htmlFor="name" className="block text-sm font-medium font-semibold text-gray-700">
+                        Item
+                      </label>
+                      <div className="mt-1 flex rounded-md shadow-sm">
+                        <input
+                          type="checkbox"
+                          name="name"
+                          id="name"
+                          className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
+                          placeholder="Name"
+                        />
+                      </div>
+                    </div>
+                    <div className="col-span-3 sm:col-span-2">
+                      <label htmlFor="others" className="block text-sm font-medium font-semibold text-gray-700">
+                        Others
+                      </label>
+                      <div className="mt-1 flex rounded-md shadow-sm">
+                        <input
+                          type="text"
+                          name="others"
+                          id="others"
+                          className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
+                          placeholder=" "
+                        />
+                      </div>
+                    </div>
+                  
                   <div>
                     <label htmlFor="description" className="block text-sm font-medium font-semibold text-gray-700">
                       Description
@@ -58,7 +114,21 @@ export default function Tables() {
                       />
                     </div>
                   </div>
-
+                  <div>
+                    <label htmlFor="address" className="block text-sm font-medium font-semibold text-gray-700">
+                      Address
+                    </label>
+                    <div className="mt-1">
+                      <textarea
+                        id="address"
+                        name="address"
+                        rows={3}
+                        className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
+                        placeholder="plot, street name, city"
+                        defaultValue={''}
+                      />
+                    </div>
+                  </div>
 
                   <div>
                     <label className="block text-sm font-medium font-semibold text-gray-700">Add item image</label>
@@ -98,7 +168,7 @@ export default function Tables() {
                     type="submit"
                     className="btn btn-block inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   >
-                    Add to giftlist
+                    Donate
                   </button>
                 </div>
               </div>
