@@ -15,6 +15,7 @@
     "gulp": "4.0.2",
     "gulp-append-prepend": "1.0.8",
     "postcss": "8.2.8",
+    "prettier": "^2.3.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-redux": "^7.2.4",
