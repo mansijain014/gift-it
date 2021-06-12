@@ -1,15 +1,13 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { userSignout } from "../firebaseActions";
 import AuthNavbar from "../components/Navbars/AuthNavbar.js";
 import AdminNavbar from "../components/Navbars/AdminNavbar.js";
 import Footer from "components/Footers/Footer.js";
 
 export default function Profile() {
   const state = useSelector((state) => state);
-  const dispatch = useDispatch();
-  const { isLoggedIn } = state;
+  const { isLoggedIn, userDetails } = state;
   return (
     <>
       {isLoggedIn ? <AdminNavbar transparent /> : <AuthNavbar />}
@@ -56,7 +54,10 @@ export default function Profile() {
                     <div className="relative">
                       <img
                         alt="..."
-                        src={require("assets/img/avatar.png").default}
+                        src={
+                          userDetails.profilePic ||
+                          require("assets/img/avatar.png").default
+                        }
                         className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"
                       />
                     </div>
@@ -92,41 +93,39 @@ export default function Profile() {
                     </div>
                   </div>
                 </div>
-                {/* <div className="text-center mt-12">
+                <div className="text-center mt-12">
                   <h3 className="text-4xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
-                    Mansi Jain
+                    {userDetails.name}
                   </h3>
                   <div className="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
                     <i className="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>{" "}
-                    Delhi, India
+                    {userDetails.city + userDetails.state}
                   </div>
                   <div className="mb-2 text-blueGray-600 mt-10">
                     <i className="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i>
-                    Computer Science Undergrad
+                    {userDetails.ZIP}
                   </div>
                   <div className="mb-2 text-blueGray-600">
                     <i className="fas fa-university mr-2 text-lg text-blueGray-400"></i>
-                    Amity University, Noida
+                    {userDetails.country}
                   </div>
-                </div> */}
-                {/* <div className="mt-10 py-10 border-t border-blueGray-200 text-center">
+                </div>
+                <div className="mt-10 py-10 border-t border-blueGray-200 text-center">
                   <div className="flex flex-wrap justify-center">
                     <div className="w-full lg:w-9/12 px-4">
                       <p className="mb-4 text-lg leading-relaxed text-blueGray-700">
-                      I am a 2nd-year student pursuing B.tech in Computer Science from Amity University, Noida.
-                      I am a Microsoft Learn Student Ambassador and also a Community Intern at Progate.
-                      Besides this, I am a Data Science & Machine Learning enthusiast and I like to explore and learn about them.
+                        {userDetails.bio}
                       </p>
                       <a
                         href="#pablo"
                         className="font-normal text-lightBlue-500"
                         onClick={(e) => e.preventDefault()}
                       >
-                        Show more
+                        {/* Show more */}
                       </a>
                     </div>
                   </div>
-                </div> */}
+                </div>
               </div>
             </div>
           </div>

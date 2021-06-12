@@ -26,10 +26,9 @@ export const userSignUp = async (data, dispatch) => {
 export const userSignIn = async (data, dispatch) => {
   const { email, password } = data;
   firebaseAuth.signInWithEmailAndPassword(email, password).then((res) => {
-    db.collection("users")
-      .doc(res.user.uid)
-      .get()
-      .then((doc) => dispatch(signIn(doc.data())));
+    fetchDetails((userDetails) => {
+      dispatch(signIn(userDetails));
+    });
   });
 };
 
@@ -40,19 +39,17 @@ export const userSignOut = async (dispatch) => {
 };
 
 export function fetchDetails(callback) {
-  return checkUserAuthState((authData) => {
+  return checkUserAuthState(async (authData) => {
     if (authData === null) {
       callback.call(null, { isLoggedIn: false });
     } else {
-      db.collection("users")
-        .doc(authData.uid)
-        .get()
-        .then((doc) => {
-          callback.call(null, {
-            ...authData,
-            isLoggedIn: true,
-          });
-        });
+      const data = await db.collection("users").doc(authData.uid).get();
+      const details = data.data();
+      callback.call(null, {
+        ...details,
+        ...authData,
+        isLoggedIn: true,
+      });
     }
   });
 }
@@ -69,9 +66,28 @@ export function checkUserAuthState(callback) {
 
 export function getAuthData(user) {
   const userProfile = Object.assign({}, user.providerData[0]);
-
   // Update uid inside providerData to user's uid
   userProfile.uid = user.uid;
 
   return userProfile;
 }
+
+export const updateProfile = async (data, dispatch) => {
+  const { first_name, last_name, country, city, state, ZIP, bio, profilePic } =
+    data;
+  const currentDetails = await firebaseAuth.currentUser;
+  await db
+    .collection("users")
+    .doc(currentDetails.uid)
+    .update({
+      first_name,
+      last_name,
+      country,
+      city,
+      state,
+      ZIP,
+      bio,
+      profilePic,
+    })
+    .then(() => dispatch(signUp({ ...currentDetails, data })));
+};

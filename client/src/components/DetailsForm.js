@@ -1,6 +1,29 @@
-import React from "react";
-
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { updateProfile } from "../firebaseActions";
 const DetailsForm = () => {
+  const dispatch = useDispatch();
+
+  const [formData, setFormData] = useState({
+    first_name: "",
+    last_name: "",
+    country: "",
+    city: "",
+    state: "",
+    ZIP: "",
+    bio: "",
+    profilePic: "",
+  });
+
+  const onChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const onSave = (e) => {
+    e.preventDefault();
+    updateProfile(formData, dispatch);
+  };
+
   return (
     <>
       <div className="mt-24 pt-20">
@@ -13,7 +36,7 @@ const DetailsForm = () => {
             </div>
           </div>
           <div className="mt-5 md:mt-0 md:col-span-2">
-            <form action="#" method="POST">
+            <form>
               <div className="shadow overflow-hidden sm:rounded-md">
                 <div className="px-4 py-5 bg-white sm:p-6">
                   <div className="grid grid-cols-6 gap-6">
@@ -29,6 +52,7 @@ const DetailsForm = () => {
                         name="first_name"
                         id="first_name"
                         autoComplete="given-name"
+                        onChange={onChange}
                         className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                       />
                     </div>
@@ -45,22 +69,7 @@ const DetailsForm = () => {
                         name="last_name"
                         id="last_name"
                         autoComplete="family-name"
-                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                      />
-                    </div>
-
-                    <div className="col-span-6 sm:col-span-4">
-                      <label
-                        htmlFor="email_address"
-                        className="block text-sm font-medium font-semibold text-gray-700"
-                      >
-                        Email address
-                      </label>
-                      <input
-                        type="text"
-                        name="email_address"
-                        id="email_address"
-                        autoComplete="email"
+                        onChange={onChange}
                         className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                       />
                     </div>
@@ -76,6 +85,7 @@ const DetailsForm = () => {
                         id="country"
                         name="country"
                         autoComplete="country"
+                        onChange={onChange}
                         className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       >
                         <option value="Afganistan">Afghanistan</option>
@@ -392,6 +402,7 @@ const DetailsForm = () => {
                         type="text"
                         name="city"
                         id="city"
+                        onChange={onChange}
                         className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                       />
                     </div>
@@ -407,6 +418,7 @@ const DetailsForm = () => {
                         type="text"
                         name="state"
                         id="state"
+                        onChange={onChange}
                         className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                       />
                     </div>
@@ -420,8 +432,9 @@ const DetailsForm = () => {
                       </label>
                       <input
                         type="text"
-                        name="postal_code"
+                        name="ZIP"
                         id="postal_code"
+                        onChange={onChange}
                         autoComplete="postal-code"
                         className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                       />
@@ -439,13 +452,29 @@ const DetailsForm = () => {
                           id="bio"
                           name="bio"
                           rows={3}
+                          onChange={onChange}
                           className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
                           placeholder=""
                           defaultValue={""}
                         />
                       </div>
                     </div>
-                    <div>
+                    <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                      <label
+                        htmlFor="postal_code"
+                        className="block text-sm font-medium font-semibold text-gray-700"
+                      >
+                        Profile Pic URL
+                      </label>
+                      <input
+                        type="text"
+                        name="profilePic"
+                        onChange={onChange}
+                        autoComplete="profilePic"
+                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      />
+                    </div>
+                    {/* <div>
                       <label className="block text-sm font-medium font-semibold text-gray-700">
                         Add Profile Photo
                       </label>
@@ -490,12 +519,13 @@ const DetailsForm = () => {
                           </p>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
                 <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
                   <button
                     type="submit"
+                    onClick={(e) => onSave(e)}
                     className="btn btn-block inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   >
                     Save

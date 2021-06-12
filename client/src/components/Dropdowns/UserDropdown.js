@@ -1,10 +1,13 @@
 // Removed
 
 import React from "react";
+import { useSelector } from "react-redux";
 import { createPopper } from "@popperjs/core";
 import { Link } from "react-router-dom";
 
 const UserDropdown = () => {
+  const state = useSelector((state) => state);
+  const { userDetails } = state;
   // dropdown props
   const [dropdownPopoverShow, setDropdownPopoverShow] = React.useState(false);
   const btnDropdownRef = React.createRef();
@@ -26,7 +29,10 @@ const UserDropdown = () => {
             <img
               alt="..."
               className="w-full rounded-full align-middle border-none shadow-lg"
-              src={require("assets/img/avatar.png").default}
+              src={
+                userDetails.profilePic ||
+                require("assets/img/avatar.png").default
+              }
             />
           </Link>
         </span>
