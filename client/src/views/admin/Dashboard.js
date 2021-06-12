@@ -1,15 +1,26 @@
 import React from "react";
-import {useState} from 'react'
+import { useState } from "react";
 // import Navbar from "components/Navbars/AuthNavbar.js";
 
 function Dashboard() {
+  const [formData, setFormData] = useState({
+    name: "",
+    description: "",
+    password: "",
+  });
 
+
+  const onChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
   return (
     <>
       <div>
         <div className="md:grid md:grid-cols-3 md:gap-6 mt-24 pt-20">
           <div className="md:col-span-1">
-              <h3 className="text-lg font-medium font-semibold leading-6 text-gray-900"><i class="fas fa-clipboard-list"></i> Add Item Info</h3>
+            <h3 className="text-lg font-medium font-semibold leading-6 text-gray-900">
+              <i class="fas fa-clipboard-list"></i> Add Item Info
+            </h3>
           </div>
           <div className="mt-5 md:mt-0 md:col-span-2">
             <form action="#" method="POST">
@@ -17,7 +28,10 @@ function Dashboard() {
                 <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
                   <div className="grid grid-cols-3 gap-6">
                     <div className="col-span-3 sm:col-span-2">
-                      <label htmlFor="itemName" className="block text-sm font-medium font-semibold text-gray-700">
+                      <label
+                        htmlFor="itemName"
+                        className="block text-sm font-medium font-semibold text-gray-700"
+                      >
                         Item Name
                       </label>
                       <div className="mt-1 flex rounded-md shadow-sm">
@@ -33,7 +47,10 @@ function Dashboard() {
                   </div>
 
                   <div>
-                    <label htmlFor="description" className="block text-sm font-medium font-semibold text-gray-700">
+                    <label
+                      htmlFor="description"
+                      className="block text-sm font-medium font-semibold text-gray-700"
+                    >
                       Description
                     </label>
                     <div className="mt-1">
@@ -43,14 +60,15 @@ function Dashboard() {
                         rows={3}
                         className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
                         placeholder="Describe your gift item"
-                        defaultValue={''}
+                        defaultValue={""}
                       />
                     </div>
                   </div>
 
-
                   <div>
-                    <label className="block text-sm font-medium font-semibold text-gray-700">Add item image</label>
+                    <label className="block text-sm font-medium font-semibold text-gray-700">
+                      Add item image
+                    </label>
                     <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
                       <div className="space-y-1 text-center">
                         <svg
@@ -72,12 +90,24 @@ function Dashboard() {
                             htmlFor="file-upload"
                             className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
                           >
-                            <span> <b>Upload a file o </b></span>
-                            <input id="file-upload" name="file-upload" type="file" className="sr-only" />
+                            <span>
+                              {" "}
+                              <b>Upload a file o </b>
+                            </span>
+                            <input
+                              id="file-upload"
+                              name="file-upload"
+                              type="file"
+                              className="sr-only"
+                            />
                           </label>
-                          <p className="pl-1"><b>r drag and drop</b></p>
+                          <p className="pl-1">
+                            <b>r drag and drop</b>
+                          </p>
                         </div>
-                        <p className="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
+                        <p className="text-xs text-gray-500">
+                          PNG, JPG, GIF up to 10MB
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -99,11 +129,4 @@ function Dashboard() {
   );
 }
 
-
-export default Dashboard
-
-
-
-
-
-
+export default Dashboard;

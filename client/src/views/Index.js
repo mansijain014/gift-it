@@ -1,13 +1,16 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import Navbar from "components/Navbars/AuthNavbar.js";
-import Footer from "components/Footers/Footer.js";
+import AuthNavbar from "../components/Navbars/AuthNavbar.js";
+import AdminNavbar from "../components/Navbars/AdminNavbar.js";
+import Footer from "../components/Footers/Footer.js";
 import { fetchDetails } from "../firebaseActions";
 import { signIn } from "../redux/actions";
 
 export default function Landing() {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
+
+  const { isLoggedIn } = state;
 
   useEffect(() => {
     fetchDetails((user) => {
@@ -19,7 +22,7 @@ export default function Landing() {
 
   return (
     <>
-      <Navbar transparent />
+      <AuthNavbar transparent />
       <main>
         <div className="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
           <div

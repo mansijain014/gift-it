@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { userSignUp } from "../../firebaseActions";
-import { Alert } from 'react-bootstrap';
+import { Alert } from "react-bootstrap";
 
 const Register = () => {
   const state = useSelector((state) => state);
@@ -33,23 +33,23 @@ const Register = () => {
     return <Redirect to="/admin/dashboard" />;
   }
 
-  // if (errorMsg) {
-  //   return (
-  //   <Alert variant="danger" onClose={() => setErrorMsg(false)} dismissible>
-  //   <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
-  //   <p>
-  //     Change this and that and try again. Duis mollis, est non commodo
-  //     luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
-  //     Cras mattis consectetur purus sit amet fermentum.
-  //   </p>
-  // </Alert>
-  //   );
-  // }
+  const AlertMessage = () => {
+    return (
+      <Alert variant="danger" onClose={() => setErrorMsg(false)} dismissible>
+        <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
+        <p>
+          Change this and that and try again. Duis mollis, est non commodo
+          luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
+          Cras mattis consectetur purus sit amet fermentum.
+        </p>
+      </Alert>
+    );
+  };
   // return <button onClick={() => setErrorMsg(true)}>Show Alert</button>;
-  
+
   return (
     <>
-    
+      {errorMsg ? <AlertMessage /> : null}
       <div className="container mx-auto px-4 h-full">
         <div className="flex content-center items-center justify-center h-full">
           <div className="w-full lg:w-6/12 px-4">
@@ -154,7 +154,6 @@ const Register = () => {
           </div>
         </div>
       </div>
-      
     </>
   );
 };

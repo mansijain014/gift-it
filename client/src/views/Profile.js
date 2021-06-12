@@ -1,12 +1,15 @@
 import React from "react";
-
-import Navbar from "components/Navbars/AuthNavbar.js";
+import { useSelector } from "react-redux";
+import AuthNavbar from "../components/Navbars/AuthNavbar.js";
+import AdminNavbar from "../components/Navbars/AdminNavbar.js";
 import Footer from "components/Footers/Footer.js";
 
 export default function Profile() {
+  const state = useSelector((state) => state);
+  const { isLoggedIn } = state;
   return (
     <>
-      <Navbar transparent />
+      {isLoggedIn ? <AdminNavbar transparent /> : <AuthNavbar />}
       <main className="profile-page">
         <section className="relative block h-500-px">
           <div
@@ -50,7 +53,7 @@ export default function Profile() {
                     <div className="relative">
                       <img
                         alt="..."
-                        src={require("assets/img/MyPic.jpeg").default}
+                        src={require("assets/img/avatar.png").default}
                         className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"
                       />
                     </div>
@@ -78,7 +81,7 @@ export default function Profile() {
                     </div>
                   </div>
                 </div>
-                <div className="text-center mt-12">
+                {/* <div className="text-center mt-12">
                   <h3 className="text-4xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
                     Mansi Jain
                   </h3>
@@ -94,13 +97,13 @@ export default function Profile() {
                     <i className="fas fa-university mr-2 text-lg text-blueGray-400"></i>
                     Amity University, Noida
                   </div>
-                </div>
-                <div className="mt-10 py-10 border-t border-blueGray-200 text-center">
+                </div> */}
+                {/* <div className="mt-10 py-10 border-t border-blueGray-200 text-center">
                   <div className="flex flex-wrap justify-center">
                     <div className="w-full lg:w-9/12 px-4">
                       <p className="mb-4 text-lg leading-relaxed text-blueGray-700">
-                      I am a 2nd-year student pursuing B.tech in Computer Science from Amity University, Noida. 
-                      I am a Microsoft Learn Student Ambassador and also a Community Intern at Progate. 
+                      I am a 2nd-year student pursuing B.tech in Computer Science from Amity University, Noida.
+                      I am a Microsoft Learn Student Ambassador and also a Community Intern at Progate.
                       Besides this, I am a Data Science & Machine Learning enthusiast and I like to explore and learn about them.
                       </p>
                       <a
@@ -108,11 +111,11 @@ export default function Profile() {
                         className="font-normal text-lightBlue-500"
                         onClick={(e) => e.preventDefault()}
                       >
-                        {/* Show more */}
+                        Show more
                       </a>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
