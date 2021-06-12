@@ -23,7 +23,7 @@ const Register = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const onSubmit = async (e) => {
+  const handleSignUp = async (e) => {
     e.preventDefault();
     const error = userSignUp(formData, dispatch);
     setErrorMsg(error);
@@ -142,7 +142,7 @@ const Register = () => {
                       <button
                         className="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                         type="button"
-                        onClick={onSubmit}
+                        onClick={handleSignUp}
                       >
                         Create Account
                       </button>

@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import Navbar from "components/Navbars/AuthNavbar.js";
 import Footer from "components/Footers/Footer.js";
+import { fetchDetails } from "../firebaseActions";
+import { signIn } from "../redux/actions";
+
 export default function Landing() {
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    fetchDetails((user) => {
+      if (user.isLoggedIn) {
+        dispatch(signIn(user));
+      }
+    });
+  }, [dispatch]);
+
   return (
     <>
       <Navbar transparent />
@@ -61,13 +76,12 @@ export default function Landing() {
                 <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
                   <div className="px-4 py-5 flex-auto">
                     <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400">
-                    <i class="fas fa-exchange-alt"></i>
+                      <i class="fas fa-exchange-alt"></i>
                     </div>
                     <h6 className="text-xl font-semibold">Exchange</h6>
                     <p className="mt-2 mb-4 text-blueGray-500">
-                     Don't like what you got for christmas?
-                     We're here to help you.
-                     Exchange it!!
+                      Don't like what you got for christmas? We're here to help
+                      you. Exchange it!!
                     </p>
                   </div>
                 </div>
@@ -81,8 +95,8 @@ export default function Landing() {
                     </div>
                     <h6 className="text-xl font-semibold">Donate</h6>
                     <p className="mt-2 mb-4 text-blueGray-500">
-                      You can gift your present to someone needy this festive season.
-                      Be someone's secret santa. Donate it!!
+                      You can gift your present to someone needy this festive
+                      season. Be someone's secret santa. Donate it!!
                     </p>
                   </div>
                 </div>
@@ -92,7 +106,7 @@ export default function Landing() {
                 <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
                   <div className="px-4 py-5 flex-auto">
                     <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-emerald-400">
-                    <i class="far fa-handshake"></i>
+                      <i class="far fa-handshake"></i>
                     </div>
                     <h6 className="text-xl font-semibold">Connect</h6>
                     <p className="mt-2 mb-4 text-blueGray-500">
@@ -107,20 +121,24 @@ export default function Landing() {
             <div className="flex flex-wrap items-center mt-32">
               <div className="w-full md:w-5/12 px-4 mr-auto ml-auto">
                 <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white">
-                <i class="fas fa-heart"></i>
+                  <i class="fas fa-heart"></i>
                 </div>
                 <h3 className="text-3xl mb-2 font-semibold leading-normal">
                   One step towards a better holiday.
                 </h3>
                 <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
-                  Gift It! is a free gift exchange platform to help you 
-                  make your wishlist come true while completing other's wishlist. 
+                  Gift It! is a free gift exchange platform to help you make
+                  your wishlist come true while completing other's wishlist.
                 </p>
                 <p className="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
-                  Gift It helps you make your holiday & someone else's holiday better at
-                  the same time bu enabling you to donate to people in need.
+                  Gift It helps you make your holiday & someone else's holiday
+                  better at the same time bu enabling you to donate to people in
+                  need.
                 </p>
-                <a href="/auth/register" className="font-bold text-blueGray-700 mt-8">
+                <a
+                  href="/auth/register"
+                  className="font-bold text-blueGray-700 mt-8"
+                >
                   Get Started!
                 </a>
               </div>
@@ -144,13 +162,13 @@ export default function Landing() {
                         className="text-lightBlue-500 fill-current"
                       ></polygon>
                     </svg>
-                    
+
                     <h4 className="text-xl font-bold text-white">
                       <i class="fas fa-quote-left"></i>
-                        <span class="tab"> Happy Gifting </span>
+                      <span class="tab"> Happy Gifting </span>
                       <i class="fas fa-quote-right"></i>
                     </h4>
-                    
+
                     {/* <p className="text-md font-light mt-2 text-white">
                       This holiday, don't just give presents but spread love.
                     </p> */}
@@ -194,9 +212,18 @@ export default function Landing() {
               <div className="w-full md:w-5/12 ml-auto mr-auto px-4">
                 <div className="md:pr-12">
                   <div className="text-lightBlue-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-lightBlue-300">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zM12 2a1 1 0 01.967.744L14.146 7.2 17.5 9.134a1 1 0 010 1.732l-3.354 1.935-1.18 4.455a1 1 0 01-1.933 0L9.854 12.8 6.5 10.866a1 1 0 010-1.732l3.354-1.935 1.18-4.455A1 1 0 0112 2z" clip-rule="evenodd" />
-                  </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-5 w-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zM12 2a1 1 0 01.967.744L14.146 7.2 17.5 9.134a1 1 0 010 1.732l-3.354 1.935-1.18 4.455a1 1 0 01-1.933 0L9.854 12.8 6.5 10.866a1 1 0 010-1.732l3.354-1.935 1.18-4.455A1 1 0 0112 2z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
                   </div>
                   <h3 className="text-3xl font-semibold">How it works?</h3>
                   <ul className="list-none mt-6">
@@ -204,12 +231,12 @@ export default function Landing() {
                       <div className="flex items-center">
                         <div>
                           <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-lightBlue-600 bg-lightBlue-200 mr-3">
-                          <i class="fas fa-search"></i>
+                            <i class="fas fa-search"></i>
                           </span>
                         </div>
                         <div>
                           <h4 className="text-blueGray-500">
-                            You can search or post your wishlist items and make 
+                            You can search or post your wishlist items and make
                             it available to people all over the globe.
                           </h4>
                         </div>
@@ -219,13 +246,13 @@ export default function Landing() {
                       <div className="flex items-center">
                         <div>
                           <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-lightBlue-600 bg-lightBlue-200 mr-3">
-                          <i class="fas fa-scroll"></i>
+                            <i class="fas fa-scroll"></i>
                           </span>
                         </div>
                         <div>
                           <h4 className="text-blueGray-500">
-                            Connect with people to see their wishlist and
-                            be each other's wish fulfilling santa.
+                            Connect with people to see their wishlist and be
+                            each other's wish fulfilling santa.
                           </h4>
                         </div>
                       </div>
@@ -234,13 +261,13 @@ export default function Landing() {
                       <div className="flex items-center">
                         <div>
                           <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-lightBlue-600 bg-lightBlue-200 mr-3">
-                          <i class="fas fa-shopping-cart"></i>
+                            <i class="fas fa-shopping-cart"></i>
                           </span>
                         </div>
                         <div>
                           <h4 className="text-blueGray-500">
-                            Can't find a match to exchange your gift? 
-                            So donate it, earn credit points and shop!
+                            Can't find a match to exchange your gift? So donate
+                            it, earn credit points and shop!
                           </h4>
                         </div>
                       </div>
@@ -272,9 +299,7 @@ export default function Landing() {
             </svg>
           </div>
 
-          <div className="container mx-auto px-4 lg:pt-24 lg:pb-64">
-
-          </div>
+          <div className="container mx-auto px-4 lg:pt-24 lg:pb-64"></div>
         </section>
         <section className="relative block py-24 lg:pt-0 bg-blueGray-800">
           <div className="container mx-auto px-4">

@@ -1,7 +1,34 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, Redirect } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { userSignIn } from "../../firebaseActions";
 
 export default function Login() {
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+
+  const { isLoggedIn } = state;
+
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const { email, password } = formData;
+
+  if (isLoggedIn) {
+    return <Redirect to="/admin/dashboard" />;
+  }
+
+  const onChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSignIn = (e) => {
+    e.preventDefault();
+    userSignIn(formData, dispatch);
+  };
+
   return (
     <>
       <div className="container mx-auto px-4 h-full">
@@ -10,12 +37,12 @@ export default function Login() {
             <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200 border-0">
               <div className="rounded-t mb-0 px-6 py-6">
                 {/* <div className="text-center mb-3"> */}
-                  {/* <h6 className="text-blueGray-500 text-sm font-bold">
+                {/* <h6 className="text-blueGray-500 text-sm font-bold">
                     Sign in with
                   </h6> */}
                 {/* </div> */}
                 {/* <div className="btn-wrapper text-center"> */}
-                  {/* <button
+                {/* <button
                     className="bg-white active:bg-blueGray-50 text-blueGray-700 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150"
                     type="button"
                   >
@@ -56,6 +83,9 @@ export default function Login() {
                       type="email"
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       placeholder="Email"
+                      name="email"
+                      value={email}
+                      onChange={onChange}
                     />
                   </div>
 
@@ -70,6 +100,9 @@ export default function Login() {
                       type="password"
                       className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                       placeholder="Password"
+                      name="password"
+                      value={password}
+                      onChange={onChange}
                     />
                   </div>
                   <div>
@@ -89,6 +122,7 @@ export default function Login() {
                     <button
                       className="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                       type="button"
+                      onClick={handleSignIn}
                     >
                       Sign In
                     </button>

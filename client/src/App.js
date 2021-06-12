@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -8,6 +8,7 @@ import {
 //REDUX
 import { Provider } from "react-redux";
 import store from "./redux/store";
+
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "assets/styles/tailwind.css";
@@ -19,8 +20,11 @@ import Auth from "./layouts/Auth";
 // views without layouts
 
 //import Landing from "views/Landing.js";
-import Profile from "views/Profile.js";
-import Index from "views/Index.js";
+import Profile from "./views/Profile";
+import Index from "./views/Index.js";
+
+import PrivateRoute from "routing/privateRoutes";
+
 
 const App = () => {
   return (
@@ -28,11 +32,11 @@ const App = () => {
       <Router>
         <Switch>
           {/* add routes with layouts */}
-          <Route path="/admin" component={Admin} />
+          <PrivateRoute path="/admin" component={Admin} />
           <Route path="/auth" component={Auth} />
           {/* add routes without layouts */}
           {/* <Route path="/landing" exact component={Landing} /> */}
-          <Route path="/profile" exact component={Profile} />
+          <PrivateRoute path="/profile" exact component={Profile} />
           <Route path="/" exact component={Index} />
           {/* add redirect for first page */}
           <Redirect from="*" to="/" />
