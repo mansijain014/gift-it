@@ -13,9 +13,12 @@ export const userSignUp = async (data, dispatch) => {
     })
     .catch((err) => err.message);
 
-  await firebaseAuth.currentUser.updateProfile({
-    displayName: name,
-  });
+  if (!error) {
+    console.log(error);
+    await firebaseAuth.currentUser.updateProfile({
+      displayName: name,
+    });
+  }
 
   return error;
 };

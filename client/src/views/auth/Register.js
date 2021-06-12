@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { userSignUp } from "../../firebaseActions";
-import { Alert } from "react-bootstrap";
 
 const Register = () => {
   const state = useSelector((state) => state);
@@ -25,29 +24,22 @@ const Register = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const error = userSignUp(formData, dispatch);
+    const error = await userSignUp(formData, dispatch);
     setErrorMsg(error);
   };
 
   if (isLoggedIn) {
-    return <Redirect to="/admin/dashboard" />;
+    <Redirect to="/admin/edit" />;
   }
-
-  const AlertMessage = () => {
-    return (
-      <Alert variant="danger" onClose={() => setErrorMsg(false)} dismissible>
-        <Alert.Heading>Incorrect Email or Password!</Alert.Heading>
-        <p>
-          Please try again with correct credentials.
-        </p>
-      </Alert>
-    );
-  };
-  // return <button onClick={() => setErrorMsg(true)}>Show Alert</button>;
+  if (errorMsg) {
+    alert(errorMsg);
+    setErrorMsg("");
+  }
 
   return (
     <>
-      {errorMsg ? <AlertMessage /> : null}
+      {/* {errorMsg ? <AlertMessage /> : null} */}
+
       <div className="container mx-auto px-4 h-full">
         <div className="flex content-center items-center justify-center h-full">
           <div className="w-full lg:w-6/12 px-4">
