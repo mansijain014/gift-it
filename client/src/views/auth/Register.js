@@ -23,7 +23,7 @@ const Register = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSignUp = async (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     const error = userSignUp(formData, dispatch);
     setErrorMsg(error);
@@ -33,18 +33,18 @@ const Register = () => {
     return <Redirect to="/admin/dashboard" />;
   }
 
-  if (errorMsg) {
-    return (
-    <Alert variant="danger" onClose={() => setErrorMsg(false)} dismissible>
-    <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
-    <p>
-      Change this and that and try again. Duis mollis, est non commodo
-      luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
-      Cras mattis consectetur purus sit amet fermentum.
-    </p>
-  </Alert>
-    );
-  }
+  // if (errorMsg) {
+  //   return (
+  //   <Alert variant="danger" onClose={() => setErrorMsg(false)} dismissible>
+  //   <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
+  //   <p>
+  //     Change this and that and try again. Duis mollis, est non commodo
+  //     luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
+  //     Cras mattis consectetur purus sit amet fermentum.
+  //   </p>
+  // </Alert>
+  //   );
+  // }
   // return <button onClick={() => setErrorMsg(true)}>Show Alert</button>;
   
   return (
@@ -142,7 +142,7 @@ const Register = () => {
                       <button
                         className="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                         type="button"
-                        onClick={handleSignUp}
+                        onClick={onSubmit}
                       >
                         Create Account
                       </button>
