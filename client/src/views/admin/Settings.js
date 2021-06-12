@@ -70,7 +70,7 @@ export default function Settings() {
                         type="button"
                         onClick={() => userSignout(dispatch)}
                       >
-                        <i class="fas fa-sign-out-alt"></i> Logout
+                        <i class="fas fa-user-edit"></i> Edit Profile
                       </button>
                     </div>
                   </div>
