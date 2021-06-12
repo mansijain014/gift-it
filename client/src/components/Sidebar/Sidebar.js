@@ -193,6 +193,22 @@ export default function Sidebar() {
                   Store
                 </Link>
               </li>
+
+              <li className="items-center">
+                <Link
+                  className={
+                    "text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500" 
+                  }
+                  to="/"
+                >
+                  <i
+                    className={
+                      "fas fa-sign-out-alt mr-2 text-sm opacity-75 text-blueGray-300" 
+                    }
+                  ></i>{" "}
+                  Logout
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
