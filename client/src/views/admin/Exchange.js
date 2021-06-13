@@ -4,6 +4,11 @@ import { db } from "../../firebase";
 export default function Exchange() {
   const [items, setItems] = useState([]);
 
+  const saveItem = (e) => {
+    e.preventDefault();
+    alert("We have notified the owner with your request!");
+  };
+
   useEffect(() => {
     db.collection("users").onSnapshot((querySnapshot) => {
       querySnapshot.forEach((doc) => {
@@ -51,7 +56,10 @@ export default function Exchange() {
                 <p className="text-md font-light mt-2 text-white">
                   {item.description}
                 </p>
-                <button className="btn btn-block inline-flex justify-center py-2 border border-transparent shadow-sm text-sm font-medium rounded-md" style={{width: 70}}>
+                <button 
+                className="btn btn-block inline-flex justify-center py-2 border border-transparent shadow-sm text-sm font-medium rounded-md" 
+                style={{width: 70}}
+                onClick={(e) => {saveItem(e)}}>
                   Interested
                 </button>
               </blockquote>
