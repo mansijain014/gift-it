@@ -102,11 +102,11 @@ export default function Profile() {
                     {userDetails.city + ", " + userDetails.state}
                   </div>
                   <div className="mb-2 text-blueGray-600 mt-10">
-                    <i className="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i>
+                    <i className="fas fa-thumbtack mr-2 text-lg text-blueGray-400"></i>
                     {userDetails.ZIP}
                   </div>
                   <div className="mb-2 text-blueGray-600">
-                    <i className="fas fa-university mr-2 text-lg text-blueGray-400"></i>
+                    <i className="fas fa-globe mr-2 text-lg text-blueGray-400"></i>
                     {userDetails.country}
                   </div>
                 </div>
