@@ -1,10 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-// components
-
-// import CardTable from "components/Cards/CardTable.js";
-// import FormTransaction from "../../components/Forms/FormTransaction";
 
 export default function Tables() {
 
@@ -13,6 +9,10 @@ export default function Tables() {
       setCreditPoints(creditPoints + 10)
     }
 
+    const saveItem = (e) => {
+      e.preventDefault();
+      alert("You have successfully donated your item. Thank you!!");
+    };
 
   return (
     <>
@@ -189,7 +189,7 @@ export default function Tables() {
                   <button
                     type="submit"
                     className="btn btn-block inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    onClick={(e) => {updateCreditPoints(e)}}
+                    onClick={(e) => {saveItem(e) ; updateCreditPoints(e)}}
                   >
                     Donate
                   </button>
