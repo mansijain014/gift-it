@@ -1,6 +1,4 @@
-import { auto } from "@popperjs/core";
 import React, { useState, useEffect } from "react";
-import { width } from "tailwindcss/defaultTheme";
 import { db } from "../../firebase";
 
 export default function Exchange() {
