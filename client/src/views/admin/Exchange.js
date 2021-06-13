@@ -1,4 +1,6 @@
+import { auto } from "@popperjs/core";
 import React, { useState, useEffect } from "react";
+import { width } from "tailwindcss/defaultTheme";
 import { db } from "../../firebase";
 
 export default function Exchange() {
@@ -51,6 +53,9 @@ export default function Exchange() {
                 <p className="text-md font-light mt-2 text-white">
                   {item.description}
                 </p>
+                <button className="btn btn-block inline-flex justify-center py-2 border border-transparent shadow-sm text-sm font-medium rounded-md" style={{width: 70}}>
+                  Interested
+                </button>
               </blockquote>
             </div>
           </div>
