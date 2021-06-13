@@ -31,11 +31,6 @@ function MyGiftList() {
     });
   };
 
-  const [creditPoints, setCreditPoints] = useState(0)
-  const updateCreditPoints = () => {
-    setCreditPoints(10)
-  }
-
   return (
     <>
         <div className="md:grid md:grid-cols-3 md:gap-6 pt-20">
@@ -159,13 +154,12 @@ function MyGiftList() {
                   <button
                     type="submit"
                     className="btn btn-block inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    onClick={(e) => {saveItem(e); updateCreditPoints()}}
+                    onClick={(e) => saveItem(e)}
                   >
                     Add to giftlist
                   </button>
                 </div>
               </div>
-              <h3>{creditPoints}</h3>
             </form>
           </div>
         </div>

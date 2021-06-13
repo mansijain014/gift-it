@@ -25,9 +25,13 @@ import Index from "./views/Index.js";
 
 import PrivateRoute from "routing/privateRoutes";
 import DetailsForm from "components/DetailsForm";
-
+// import { useState } from "react";
 
 const App = () => {
+  // const [creditPoints, setCreditPoints] = useState(0)
+  // const updateCreditPoints = () => {
+  //   setCreditPoints(10)
+  // }
   return (
     <Provider store={store}>
       <Router>

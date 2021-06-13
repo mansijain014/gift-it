@@ -1,11 +1,19 @@
 import React from "react";
-
+import { useState } from "react";
+import { Link } from "react-router-dom";
 // components
 
 // import CardTable from "components/Cards/CardTable.js";
 // import FormTransaction from "../../components/Forms/FormTransaction";
 
 export default function Tables() {
+
+    const [creditPoints, setCreditPoints] = useState(0)
+    const updateCreditPoints = () => {
+      setCreditPoints(creditPoints + 10)
+    }
+
+
   return (
     <>
 <div>
@@ -177,12 +185,16 @@ export default function Tables() {
                   </div>
                 </div>
                 <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                  <Link to="/admin/donate">
                   <button
                     type="submit"
                     className="btn btn-block inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    onClick={(e) => {updateCreditPoints(e)}}
                   >
                     Donate
                   </button>
+                  </Link>
+                  <h3 className= "font-semibold">Credit Points: {creditPoints}</h3>
                 </div>
               </div>
             </form>
