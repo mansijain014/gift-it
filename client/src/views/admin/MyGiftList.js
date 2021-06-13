@@ -33,8 +33,7 @@ function MyGiftList() {
 
   return (
     <>
-      <div>
-        <div className="md:grid md:grid-cols-3 md:gap-6 mt-24 pt-20">
+        <div className="md:grid md:grid-cols-3 md:gap-6 pt-20">
           <div className="md:col-span-1">
             <h3 className="text-lg font-medium font-semibold leading-6 text-gray-900">
               <i class="fas fa-clipboard-list"></i> Add Item Info
@@ -164,7 +163,6 @@ function MyGiftList() {
             </form>
           </div>
         </div>
-      </div>
     </>
   );
 }

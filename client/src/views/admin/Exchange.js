@@ -18,7 +18,7 @@ export default function Exchange() {
   }, []);
 
   return (
-    <div className="flex flex-wrap my-10 py-10">
+    <div className="flex flex-wrap pt-20">
       {items.map((item) => {
         return (
           <div className="w-full md:w-4/12 px-4 mr-auto ml-auto">
@@ -28,8 +28,8 @@ export default function Exchange() {
                 src={item.imageURL}
                 className="w-full align-middle rounded-t-lg"
                 style={{
-                  height: 500,
-                  width: 500,
+                  height: 300,
+                  width: 400,
                 }}
               />
               <blockquote className="relative p-8 mb-4">
