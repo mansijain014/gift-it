@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import AuthNavbar from "../components/Navbars/AuthNavbar.js";
@@ -8,6 +8,10 @@ import Footer from "components/Footers/Footer.js";
 export default function Profile() {
   const state = useSelector((state) => state);
   const { isLoggedIn, userDetails } = state;
+  const [creditPoints, setCreditPoints] = useState(0)
+  const updateCreditPoints = () => {
+    setCreditPoints(10)
+  }
   return (
     <>
       {isLoggedIn ? <AdminNavbar transparent /> : <AuthNavbar />}
@@ -88,7 +92,7 @@ export default function Profile() {
                         <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
                           Credit Points
                         </span>
-                        <span className="text-sm text-blueGray-400">500</span>
+                        <span className="text-sm text-blueGray-400">{creditPoints}</span>
                       </div>
                     </div>
                   </div>
