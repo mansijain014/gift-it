@@ -1,25 +1,43 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { incrementCredits } from "firebaseActions";
+import { db } from "../../firebase";
 
 export default function Tables() {
+  const state = useSelector((state) => state);
+  const { userDetails } = state;
+  const [creditPoints, setCreditPoints] = useState(0);
+  const updateCreditPoints = () => {
+    setCreditPoints((creditPoints) => creditPoints + 10);
+    incrementCredits(userDetails.uid);
+  };
 
-    const [creditPoints, setCreditPoints] = useState(0)
-    const updateCreditPoints = () => {
-      setCreditPoints(creditPoints + 10)
-    }
+  useEffect(() => {
+    db.collection("users")
+      .doc(userDetails.uid)
+      .get()
+      .then((doc) => {
+        const data = doc.data();
+        setCreditPoints(data.credits||0);
+      });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-    const saveItem = (e) => {
-      e.preventDefault();
-      alert("You have successfully donated your item. Thank you!!");
-    };
+  const saveItem = (e) => {
+    e.preventDefault();
+    alert("You have successfully donated your item. Thank you!!");
+  };
 
   return (
     <>
-<div>
+      <div>
         <div className="md:grid md:grid-cols-3 md:gap-6 pt-20">
           <div className="md:col-span-1">
-              <h3 className="text-lg font-medium font-semibold leading-6 text-gray-900"><i class="fas fa-people-carry"></i> Add item for donation</h3>
+            <h3 className="text-lg font-medium font-semibold leading-6 text-gray-900">
+              <i class="fas fa-people-carry"></i> Add item for donation
+            </h3>
           </div>
           <div className="mt-5 md:mt-0 md:col-span-2">
             <form action="#" method="POST">
@@ -27,7 +45,10 @@ export default function Tables() {
                 <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
                   <div className="grid grid-cols-3 gap-6">
                     <div className="col-span-3 sm:col-span-2">
-                      <label htmlFor="name" className="block text-sm font-medium font-semibold text-gray-700">
+                      <label
+                        htmlFor="name"
+                        className="block text-sm font-medium font-semibold text-gray-700"
+                      >
                         Name
                       </label>
                       <div className="mt-1 flex rounded-md shadow-sm">
@@ -42,86 +63,103 @@ export default function Tables() {
                     </div>
                   </div>
                   <div className="col-span-3 sm:col-span-2">
-                      <label htmlFor="contactNo" className="block text-sm font-medium font-semibold text-gray-700">
-                        Contact No
-                      </label>
-                      <div className="mt-1 flex rounded-md shadow-sm">
-                        <input
-                          type="text"
-                          name="contactNo"
-                          id="contactNo"
-                          className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
-                          placeholder="000-000-0000"
-                        />
-                      </div>
+                    <label
+                      htmlFor="contactNo"
+                      className="block text-sm font-medium font-semibold text-gray-700"
+                    >
+                      Contact No
+                    </label>
+                    <div className="mt-1 flex rounded-md shadow-sm">
+                      <input
+                        type="text"
+                        name="contactNo"
+                        id="contactNo"
+                        className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
+                        placeholder="000-000-0000"
+                      />
                     </div>
-                    <div className="col-span-3 sm:col-span-2">
-                      <label htmlFor="email" className="block text-sm font-medium font-semibold text-gray-700">
-                        Email
-                      </label>
-                      <div className="mt-1 flex rounded-md shadow-sm">
-                        <input
-                          type="text"
-                          name="email"
-                          id="email"
-                          className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
-                          placeholder="abc@example.com"
-                        />
-                      </div>
+                  </div>
+                  <div className="col-span-3 sm:col-span-2">
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium font-semibold text-gray-700"
+                    >
+                      Email
+                    </label>
+                    <div className="mt-1 flex rounded-md shadow-sm">
+                      <input
+                        type="text"
+                        name="email"
+                        id="email"
+                        className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
+                        placeholder="abc@example.com"
+                      />
                     </div>
+                  </div>
 
-                    <div className="col-span-3 sm:col-span-2">
-                      <div>
-                        <label htmlFor="category" className="block text-sm font-medium font-semibold text-gray-700">Select a category</label>
-                      </div>
-                      <div>
-                        <input type="checkbox" value="Clothes" />
-                        <label className="text-sm font-medium font-semibold text-gray-700 pl-4">
-                          <span>Clothes</span>
-                        </label>
-                      </div>
-                      <div>
-                        <input type="checkbox" value="Toys" />
-                        <label className="text-sm font-medium font-semibold text-gray-700 pl-4">
-                          <span>Toys</span>
-                        </label>
-                      </div>
-                      <div>
-                        <input type="checkbox" value="Furniture" />
-                        <label className="text-sm font-medium font-semibold text-gray-700 pl-4">
-                          <span>Furniture</span>
-                        </label>
-                      </div>
-                      <div>
-                        <input type="checkbox" value="Gadgets" />
-                        <label className="text-sm font-medium font-semibold text-gray-700 pl-4">
-                          <span>Gadgets</span>
-                        </label>
-                      </div>
-                      <div>
-                        <input type="checkbox" value="Others" />
-                        <label className="text-sm font-medium font-semibold text-gray-700 pl-4"> 
-                          <span>Others</span>
-                        </label>
-                      </div>
-                    </div>
-                    <div className="col-span-3 sm:col-span-2">
-                      <label htmlFor="others" className="block text-sm font-medium font-semibold text-gray-700">
-                        Others
+                  <div className="col-span-3 sm:col-span-2">
+                    <div>
+                      <label
+                        htmlFor="category"
+                        className="block text-sm font-medium font-semibold text-gray-700"
+                      >
+                        Select a category
                       </label>
-                      <div className="mt-1 flex rounded-md shadow-sm">
-                        <input
-                          type="text"
-                          name="others"
-                          id="others"
-                          className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
-                          placeholder=" "
-                        />
-                      </div>
                     </div>
-                  
+                    <div>
+                      <input type="checkbox" value="Clothes" />
+                      <label className="text-sm font-medium font-semibold text-gray-700 pl-4">
+                        <span>Clothes</span>
+                      </label>
+                    </div>
+                    <div>
+                      <input type="checkbox" value="Toys" />
+                      <label className="text-sm font-medium font-semibold text-gray-700 pl-4">
+                        <span>Toys</span>
+                      </label>
+                    </div>
+                    <div>
+                      <input type="checkbox" value="Furniture" />
+                      <label className="text-sm font-medium font-semibold text-gray-700 pl-4">
+                        <span>Furniture</span>
+                      </label>
+                    </div>
+                    <div>
+                      <input type="checkbox" value="Gadgets" />
+                      <label className="text-sm font-medium font-semibold text-gray-700 pl-4">
+                        <span>Gadgets</span>
+                      </label>
+                    </div>
+                    <div>
+                      <input type="checkbox" value="Others" />
+                      <label className="text-sm font-medium font-semibold text-gray-700 pl-4">
+                        <span>Others</span>
+                      </label>
+                    </div>
+                  </div>
+                  <div className="col-span-3 sm:col-span-2">
+                    <label
+                      htmlFor="others"
+                      className="block text-sm font-medium font-semibold text-gray-700"
+                    >
+                      Others
+                    </label>
+                    <div className="mt-1 flex rounded-md shadow-sm">
+                      <input
+                        type="text"
+                        name="others"
+                        id="others"
+                        className="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
+                        placeholder=" "
+                      />
+                    </div>
+                  </div>
+
                   <div>
-                    <label htmlFor="description" className="block text-sm font-medium font-semibold text-gray-700">
+                    <label
+                      htmlFor="description"
+                      className="block text-sm font-medium font-semibold text-gray-700"
+                    >
                       Description
                     </label>
                     <div className="mt-1">
@@ -131,12 +169,15 @@ export default function Tables() {
                         rows={3}
                         className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
                         placeholder="Describe your gift item"
-                        defaultValue={''}
+                        defaultValue={""}
                       />
                     </div>
                   </div>
                   <div>
-                    <label htmlFor="address" className="block text-sm font-medium font-semibold text-gray-700">
+                    <label
+                      htmlFor="address"
+                      className="block text-sm font-medium font-semibold text-gray-700"
+                    >
                       Address
                     </label>
                     <div className="mt-1">
@@ -146,13 +187,15 @@ export default function Tables() {
                         rows={3}
                         className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
                         placeholder="Plot, street name, city"
-                        defaultValue={''}
+                        defaultValue={""}
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium font-semibold text-gray-700">Add item image</label>
+                    <label className="block text-sm font-medium font-semibold text-gray-700">
+                      Add item image
+                    </label>
                     <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
                       <div className="space-y-1 text-center">
                         <svg
@@ -174,27 +217,44 @@ export default function Tables() {
                             htmlFor="file-upload"
                             className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
                           >
-                            <span> <b>Upload a file o </b></span>
-                            <input id="file-upload" name="file-upload" type="file" className="sr-only" />
+                            <span>
+                              {" "}
+                              <b>Upload a file o </b>
+                            </span>
+                            <input
+                              id="file-upload"
+                              name="file-upload"
+                              type="file"
+                              className="sr-only"
+                            />
                           </label>
-                          <p className="pl-1"><b>r drag and drop</b></p>
+                          <p className="pl-1">
+                            <b>r drag and drop</b>
+                          </p>
                         </div>
-                        <p className="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
+                        <p className="text-xs text-gray-500">
+                          PNG, JPG, GIF up to 10MB
+                        </p>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
                   <Link to="/admin/donate">
-                  <button
-                    type="submit"
-                    className="btn btn-block inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    onClick={(e) => {saveItem(e) ; updateCreditPoints(e)}}
-                  >
-                    Donate
-                  </button>
+                    <button
+                      type="submit"
+                      className="btn btn-block inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      onClick={(e) => {
+                        saveItem(e);
+                        updateCreditPoints(e);
+                      }}
+                    >
+                      Donate
+                    </button>
                   </Link>
-                  <h3 className= "font-semibold">Credit Points: {creditPoints}</h3>
+                  <h3 className="font-semibold">
+                    Credit Points: {creditPoints}
+                  </h3>
                 </div>
               </div>
             </form>

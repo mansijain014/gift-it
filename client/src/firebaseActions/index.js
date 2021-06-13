@@ -7,7 +7,7 @@ export const userSignUp = async (data, dispatch) => {
   const error = await firebaseAuth
     .createUserWithEmailAndPassword(email, password)
     .then((res) => {
-      const userData = { email, name, uid: res.user.uid };
+      const userData = { email, name, uid: res.user.uid, credits: 0 };
       dispatch(signUp(userData));
       db.collection("users").doc(res.user.uid).set(userData);
       return null;
@@ -98,5 +98,13 @@ export const saveItemInDB = (data, uid) => {
     .doc(uid)
     .update({
       items: firebase.firestore.FieldValue.arrayUnion(data),
+    });
+};
+
+export const incrementCredits = (uid) => {
+  db.collection("users")
+    .doc(uid)
+    .update({
+      credits: firebase.firestore.FieldValue.increment(10),
     });
 };
