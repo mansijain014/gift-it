@@ -84,7 +84,7 @@ export default function Settings() {
                         <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
                           Credit Points
                         </span>
-                        <span className="text-sm text-blueGray-400">500</span>
+                        <span className="text-sm text-blueGray-400">50</span>
                       </div>
                     </div>
                   </div>

@@ -78,7 +78,7 @@ const Store = () => {
                   <button>
                   <img
                     alt="..."
-                    src="https://1000logos.net/wp-content/uploads/2017/02/Hennes-Logo-19682.jpg"
+                    src="https://specials-images.forbesimg.com/imageserve/5e8167d25ac68900062d4126/960x0.jpg?fit=scale"
                     className="w-full align-middle rounded-t-lg"
                   />
                   <blockquote className="relative p-8 mb-4">
