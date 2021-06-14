@@ -99,7 +99,7 @@ export default function Landing() {
                     <h6 className="text-xl font-semibold">Donate</h6>
                     <p className="mt-2 mb-4 text-blueGray-500">
                       You can gift your present to someone needy this festive
-                      season. Be someone's secret santa. Donate it!!
+                      season. Be someone's secret santa & earn credit points!!
                     </p>
                   </div>
                 </div>
@@ -109,12 +109,11 @@ export default function Landing() {
                 <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
                   <div className="px-4 py-5 flex-auto">
                     <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-emerald-400">
-                      <i class="far fa-handshake"></i>
+                      <i class="fas fa-shopping-cart"></i>
                     </div>
-                    <h6 className="text-xl font-semibold">Connect</h6>
+                    <h6 className="text-xl font-semibold">Shop</h6>
                     <p className="mt-2 mb-4 text-blueGray-500">
-                      Connect with friends and family to share wishlist ideas.
-                      Share it!!
+                      Shop from your favourite platforms using the credit points you earn!!
                     </p>
                   </div>
                 </div>
